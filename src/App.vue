@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { ref } from "vue";
-
 import { useTodosStore } from "./store/todo";
 
 import TodoForm from "./components/Form.vue";
@@ -8,7 +6,7 @@ import Todo from "./components/Todo.vue";
 
 const { todos, addTodo } = useTodosStore();
 
-const handleAddTodo = (value) => {
+const handleAddTodo = (value: string) => {
   addTodo(value);
 };
 </script>

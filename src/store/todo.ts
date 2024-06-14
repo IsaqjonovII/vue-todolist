@@ -16,10 +16,14 @@ export const useTodosStore = defineStore("todos-store", () => {
   };
 
   const removeTodo = (todoIdx: number) => {
-    const index = todos.value.findIndex((todo) => todoIdx == todo.id);
+    const todoIdToRemove = Number(todoIdx);
+    const index = todos.value.findIndex((todo) => todo.id === todoIdToRemove);
 
     if (index > -1) {
       todos.value.splice(index, 1);
+      console.log(`Removed todo with id ${todoIdToRemove}`);
+    } else {
+      alert(`Todo with id ${todoIdToRemove} not found`);
     }
   };
 

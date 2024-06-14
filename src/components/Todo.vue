@@ -1,35 +1,31 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { useTodosStore } from "../store/todo";
-import TodoForm from "./components/Form.vue";
-
 import { ITodo } from "../types";
 
-const { id, text, completed } = defineProps<ITodo>();
+// Define props
+const props = defineProps<ITodo>();
 
-const { toggleTodoStatus, removeTodo, todos } = useTodosStore();
+const { toggleTodoStatus, removeTodo } = useTodosStore();
 
-const checked = ref(false);
+const checked = ref(props.completed);
 
 const changeTodoStatus = () => {
-  toggleTodoStatus(id);
+  toggleTodoStatus(props.id);
+  checked.value = !checked.value;
 };
 
 const handleRemoveTodo = () => {
-  removeTodo(id);
+  removeTodo(props.id);
 };
-
-console.log(id, text, completed);
-
-
 </script>
 
 <template>
   <li
     class="w-full p-2 rounded-md border border-bottom flex justify-between"
-    :class="{ 'bg-slate-500 line-through': checked }"
+    :class="{ 'opacity-60': checked }"
   >
-    <span>{{ text }}</span>
+    <span :class="{ 'line-through': checked }">{{ text }}</span>
 
     <div class="flex items-center gap-4">
       <input
