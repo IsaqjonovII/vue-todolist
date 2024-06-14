@@ -5,9 +5,14 @@ import type { ITodo } from "../types";
 
 export const useTodosStore = defineStore("todos-store", () => {
   const todos = ref<ITodo[]>([]);
+  const todoId = ref(0);
 
-  const addTodo = (todo: ITodo) => {
-    todos.value.push(todo);
+  const addTodo = (todoText: string) => {
+    todos.value.push({
+      id: todoId.value++,
+      text: todoText,
+      completed: false,
+    });
   };
 
   const removeTodo = (todoIdx: number) => {

@@ -5,7 +5,7 @@ import TodoForm from "./components/Form.vue";
 
 import { ITodo } from "../types";
 
-const { id } = defineProps<ITodo>();
+const { id, text, completed } = defineProps<ITodo>();
 
 const { toggleTodoStatus, removeTodo, todos } = useTodosStore();
 
@@ -18,6 +18,10 @@ const changeTodoStatus = () => {
 const handleRemoveTodo = () => {
   removeTodo(id);
 };
+
+console.log(id, text, completed);
+
+
 </script>
 
 <template>
