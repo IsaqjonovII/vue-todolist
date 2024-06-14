@@ -1,11 +1,15 @@
 import { defineStore } from "pinia";
-import { ref } from "vue";
+import { computed, ref } from "vue";
 
 import type { ITodo } from "../types";
 
 export const useTodosStore = defineStore("todos-store", () => {
   const todos = ref<ITodo[]>([]);
   const todoId = ref(0);
+
+  const completedTodos = computed(() =>
+    todos.value.filter((todo) => todo.completed),
+  );
 
   const addTodo = (todoText: string) => {
     todos.value.push({
@@ -38,6 +42,7 @@ export const useTodosStore = defineStore("todos-store", () => {
 
   return {
     todos,
+    completedTodos,
     addTodo,
     removeTodo,
     toggleTodoStatus,
