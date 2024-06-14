@@ -1,8 +1,8 @@
 # diff between flexbox and Grid
 
 - they are both layout structures, but have differences
-- we use flexbox for unidirectional layout.  we can control only row or column
-- in grid, we can control row and column simultanenously.
+- we use flexbox for one-dimentional layout.  we can control only row or column
+- in grid, we can control row and column simultanenously. it's two dimentional.
 
 
 # lifecycle hooks
